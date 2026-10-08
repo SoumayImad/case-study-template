@@ -2,842 +2,1364 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="iMAD Research Case Study Template - A4 Format">
-    <title>iMAD Research - Case Study Template</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="utf-8">
+    <title>Case Study</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        :root {
+            --dark: #0a0f1d;
+            --deep: #070b14;
+            --p1: #0052d6;
+            --p2: #428afe;
+            --lav: #bfdbfe;
+            --ink: #0a0f1d;
+            --txt: #555;
+            --grad: linear-gradient(135deg, #0052d6 0%, #428afe 100%);
+            --shape-blur: 2.2px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            background: #d8d8de
+        }
+
+        body {
+            font-family: 'Barlow', Arial, sans-serif;
+            color: var(--txt);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 10mm auto;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .2)
+        }
+
+        @media print {
+
+            html,
+            body {
+                background: #fff
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none
+            }
+
+            .page:last-child {
+                page-break-after: auto
+            }
+        }
+
+        /* shared */
+        .abs {
+            position: absolute
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 3mm;
+            color: #fff;
+        }
+
+        .imad-logo-img {
+            height: 7mm;
+            width: auto;
+            display: block;
+        }
+
+        h2.h {
+            font-size: 16.5pt;
+            font-weight: 800;
+            color: var(--ink);
+            text-transform: uppercase;
+            border-left: 1.5mm solid var(--p1);
+            padding-left: 3mm;
+            line-height: 1.15;
+            margin-bottom: 3.5mm
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 2mm;
+            padding: 3.5mm 4mm;
+            margin-bottom: 4mm;
+            box-shadow: 0 1.5mm 5mm rgba(10, 15, 29, 0.08), 0 0.5mm 1.5mm rgba(0, 82, 214, 0.06);
+            border: 0.25mm solid rgba(0, 82, 214, 0.12);
+        }
+
+        .card:last-child {
+            margin-bottom: 0;
+        }
+
+        .txt {
+            display: block
+        }
+
+        .s12 {
+            height: 12mm
+        }
+
+        .s14 {
+            height: 14mm
+        }
+
+        .s18 {
+            height: 18mm
+        }
+
+        .s20 {
+            height: 20mm
+        }
+
+        .s24 {
+            height: 24mm
+        }
+
+        .s30 {
+            height: 30mm
+        }
+
+        .s36 {
+            height: 36mm
+        }
+
+        .s38 {
+            height: 38mm
+        }
+
+        .s42 {
+            height: 42mm
+        }
+
+        .s45 {
+            height: 45mm
+        }
+
+        .s48 {
+            height: 48mm
+        }
+
+        .s8 {
+            height: 8mm
+        }
+
+        .ic {
+            width: 11mm;
+            height: 11mm;
+            border-radius: 50%;
+            background: var(--grad);
+            flex: none;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .ic svg {
+            width: 6mm;
+            height: 6mm;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .ico svg {
+            width: 12mm;
+            height: 12mm;
+            stroke: var(--p1);
+            fill: none;
+            stroke-width: 1.3;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .sub {
+            font-size: 9.5pt;
+            font-weight: 700;
+            color: var(--ink)
+        }
+
+        .row {
+            display: flex;
+            gap: 3mm;
+            align-items: flex-start;
+            margin-bottom: 5mm
+        }
+
+        .row:last-child {
+            margin-bottom: 0
+        }
+
+        .criteria-card {
+            background: #f8fafc;
+            border: 0.25mm solid rgba(0, 82, 214, 0.12);
+        }
+
+        .row-card {
+            background: #fff;
+            border-radius: 1.8mm;
+            padding: 3mm 3.2mm;
+            margin-bottom: 3mm;
+            box-shadow: 0 1.2mm 4mm rgba(10, 15, 29, 0.08), 0 0.5mm 1.5mm rgba(0, 82, 214, 0.05);
+            border: 0.25mm solid rgba(0, 82, 214, 0.1);
+            align-items: center;
+        }
+
+        .row-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .row-card .txt {
+            height: 16mm;
+        }
+
+        .row .txt {
+            height: 14mm
+        }
+
+        .cap {
+            text-align: center;
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--ink)
+        }
+
+        /* ---------- SHARED HEADER (PAGE 1 & PAGE 2) ---------- */
+        .p1 .hero,
+        .p2 .hero {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 34mm;
+            background: var(--grad)
+        }
+
+        .p1 .dark,
+        .p2 .dark {
+            left: 0;
+            top: 0;
+            width: 38%;
+            height: 20mm;
+            background: var(--dark);
+            clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%)
+        }
+
+        .p1 .lav,
+        .p2 .lav {
+            left: 187px;
+            top: 20mm;
+            width: 100%;
+            height: 14mm;
+            background: #dbeafe;
+            clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%)
+        }
+
+        .p1 .logo,
+        .p2 .logo {
+            left: 9mm;
+            top: 7mm
+        }
+
+        .p1 .ttl,
+        .p2 .ttl {
+            right: 9mm;
+            top: 9mm;
+            text-align: right;
+            color: #fff
+        }
+
+        .p1 .ttl b,
+        .p2 .ttl b {
+            display: block;
+            font-size: 26pt;
+            font-weight: 800;
+            line-height: 1
+        }
+
+        .p1 .ttl span,
+        .p2 .ttl span {
+            display: block;
+            font-size: 15pt;
+            font-weight: 500;
+            letter-spacing: .5pt;
+            margin-top: 1mm
+        }
+
+        .p1 .cols {
+            left: 9mm;
+            right: 9mm;
+            top: 42mm;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9mm
+        }
+
+        .p1 .res {
+            display: flex;
+            justify-content: space-around;
+            margin: 4mm 0 6mm
+        }
+
+        .p1 .res div {
+            width: 40%
+        }
+
+        .p1 .res .ico {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2mm
+        }
+
+        .p1 .res .txt {
+            height: 18mm;
+            margin-top: 2mm
+        }
+
+        .p1 .concl {
+            background: var(--grad);
+            color: #fff;
+            padding: 6mm 5mm;
+            margin: 0 0 4mm 0;
+            position: relative;
+            border-radius: 2mm;
+            box-shadow: 0 1.5mm 5mm rgba(0, 82, 214, 0.28), 0 0.5mm 2mm rgba(0, 82, 214, 0.15);
+        }
+
+        .p1 .concl h3 {
+            display: flex;
+            align-items: center;
+            gap: 2.5mm;
+            font-size: 16.5pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 2.5mm
+        }
+
+        .p1 .concl h3 svg {
+            width: 8mm;
+            height: 8mm;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 1.6
+        }
+
+        .p1 .quote {
+            height: 55mm;
+            border: none;
+            margin-bottom: 2mm
+        }
+
+        .p1 .lorem {
+            text-align: right;
+            font-weight: 700;
+            color: var(--ink);
+            font-size: 9pt
+        }
+
+        .p1 .contact-card {
+            padding: 12mm 5mm;
+            min-height: 48mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .p1 .contact {
+            margin-top: 0
+        }
+
+        .p1 .contact h3 {
+            font-size: 14.5pt;
+            color: var(--ink);
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 2.5mm
+        }
+
+        .p1 .contact p {
+            font-size: 11pt;
+            line-height: 1.7;
+            color: #444;
+            font-weight: 500
+        }
+
+        /* Shared Footer */
+        .foot {
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 16mm;
+            background: var(--grad);
+        }
+
+        .foot .l {
+            left: 50%;
+            bottom: 0;
+            width: 30%;
+            height: 9mm;
+            background: var(--lav);
+            clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+            opacity: .8;
+        }
+
+        .foot .l2 {
+            left: 78%;
+            bottom: 0;
+            width: 22%;
+            height: 12mm;
+            background: #60a5fa;
+            opacity: .6;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .soc {
+            left: 9mm;
+            bottom: 4.5mm;
+            display: flex;
+            gap: 3mm;
+            z-index: 2;
+        }
+
+        .soc i {
+            width: 7mm;
+            height: 7mm;
+            border-radius: 50%;
+            border: .35mm solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .soc i svg {
+            width: 3.5mm;
+            height: 3.5mm;
+            fill: #fff;
+        }
+
+        .web {
+            right: 9mm;
+            bottom: 5mm;
+            color: #fff;
+            font-size: 8pt;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        /* ---------- PAGE 2 ---------- */
+        .p2 .hero {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 34mm;
+            background: var(--grad)
+        }
+
+        .p2 .dark {
+            left: 0;
+            top: 0;
+            width: 38%;
+            height: 20mm;
+            background: var(--dark);
+            clip-path: polygon(0 0, 100% 0, 78% 100%, 0 100%)
+        }
+
+        .p2 .lav {
+            left: 187px;
+            top: 20mm;
+            width: 100%;
+            height: 14mm;
+            background: #dbeafe;
+            clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%)
+        }
+
+        .p2 .logo {
+            left: 9mm;
+            top: 7mm
+        }
+
+        .p2 .ttl {
+            right: 9mm;
+            top: 9mm;
+            text-align: right;
+            color: #fff
+        }
+
+        .p2 .ttl b {
+            display: block;
+            font-size: 26pt;
+            font-weight: 800;
+            line-height: 1
+        }
+
+        .p2 .ttl span {
+            display: block;
+            font-size: 15pt;
+            font-weight: 500;
+            letter-spacing: .5pt;
+            margin-top: 1mm
+        }
+
+        .p2 .about {
+            left: 9mm;
+            top: 42mm;
+            width: 114mm
+        }
+
+        .p2 .ab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4mm 5mm;
+            margin-top: 5mm
+        }
+
+        .p2 .ab-grid .row {
+            margin: 0
+        }
+
+        .p2 .ab-grid .txt {
+            height: 16mm
+        }
+
+        .p2 .left {
+            left: 9mm;
+            top: 42mm;
+            width: 114mm
+        }
+
+        .p2 .right {
+            left: 132mm;
+            top: 42mm;
+            width: 69mm
+        }
+
+        .p2 .about-txt,
+        .about-desc {
+            font-size: 9pt;
+            line-height: 1.55;
+            color: #444;
+            font-weight: 500;
+            margin-bottom: 3.5mm;
+        }
+
+        .p2 .challenge {
+            margin-top: 0
+        }
+
+        .p2 .n {
+            display: flex;
+            align-items: center;
+            gap: 2.5mm;
+            margin-bottom: 1mm
+        }
+
+        .p2 .n i {
+            font-style: normal;
+            background: var(--p1);
+            color: #fff;
+            font-size: 8pt;
+            font-weight: 700;
+            padding: .5mm 1.6mm
+        }
+
+        .p2 .n b {
+            font-size: 9.5pt;
+            color: var(--ink)
+        }
+
+        .p2 .item {
+            margin-bottom: 3.5mm
+        }
+
+        .p2 .item:last-child {
+            margin-bottom: 0
+        }
+
+        .p2 .item .txt {
+            height: 12mm
+        }
+
+        .p2 .method {
+            margin-top: 0
+        }
+
+        .p2 .call {
+            margin-top: 0
+        }
+
+        .p2 .call p {
+            font-size: 10.5pt;
+            color: var(--ink);
+            font-weight: 600;
+            line-height: 1.55
+        }
+
+        .p2 .call .lbl {
+            font-size: 14pt;
+            color: var(--ink);
+            font-weight: 800;
+            margin-bottom: 1.5mm
+        }
+
+        .p2 .pbox {
+            background: var(--grad);
+            padding: 4.5mm 4mm;
+            display: flex;
+            justify-content: space-around;
+            margin: 3.5mm 0 4.5mm;
+            border-radius: 1.8mm;
+            box-shadow: 0 1mm 3mm rgba(0, 82, 214, 0.22)
+        }
+
+        .p2 .pbox div {
+            text-align: center;
+            color: #fff;
+            font-size: 7.5pt;
+            font-weight: 500
+        }
+
+        .p2 .pbox svg {
+            width: 9mm;
+            height: 9mm;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 1.3;
+            display: block;
+            margin: 0 auto 2mm;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .p2 .bul {
+            display: flex;
+            gap: 2.5mm;
+            margin-bottom: 3.5mm
+        }
+
+        .p2 .bul:last-child {
+            margin-bottom: 0
+        }
+
+        .p2 .bul i {
+            width: 2.4mm;
+            height: 2.4mm;
+            background: var(--p1);
+            flex: none;
+            margin-top: 1.5mm
+        }
+
+        .p2 .bul .txt {
+            height: 16mm;
+            flex: 1
+        }
+
+        /* ================= BACKGROUND DOTS & SHAPES ================= */
+        .bg-grid {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(0, 82, 214, 0.12) 0.85px, transparent 0.85px);
+            background-size: 5mm 5mm;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-shapes {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(var(--shape-blur, 2.2px));
+            -webkit-filter: blur(var(--shape-blur, 2.2px));
+        }
+
+        .p1 .cols,
+        .p2 .left,
+        .p2 .right {
+            z-index: 2;
+        }
+
+        .p1 .hero,
+        .p2 .hero,
+        .p1 .dark,
+        .p2 .dark,
+        .p1 .lav,
+        .p2 .lav,
+        .p1 .logo,
+        .p2 .logo,
+        .p1 .ttl,
+        .p2 .ttl,
+        .foot,
+        .soc,
+        .web {
+            z-index: 3;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="a4-page">
-        <!-- Background Decorative Elements -->
-        <div class="bg-pattern">
-            <svg class="circuit-svg" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <!-- Ambient Glow Gradients -->
-                    <radialGradient id="glowTopRight" cx="80%" cy="15%" r="40%">
-                        <stop offset="0%" stop-color="#428afe" stop-opacity="0.10" />
-                        <stop offset="100%" stop-color="#428afe" stop-opacity="0" />
-                    </radialGradient>
-                    <radialGradient id="glowMidLeft" cx="15%" cy="50%" r="35%">
-                        <stop offset="0%" stop-color="#0052d6" stop-opacity="0.08" />
-                        <stop offset="100%" stop-color="#0052d6" stop-opacity="0" />
-                    </radialGradient>
-                    <radialGradient id="glowMidRight" cx="85%" cy="65%" r="35%">
-                        <stop offset="0%" stop-color="#428afe" stop-opacity="0.09" />
-                        <stop offset="100%" stop-color="#428afe" stop-opacity="0" />
-                    </radialGradient>
 
-                    <!-- Dot grid pattern -->
-                    <pattern id="dotGrid" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
-                        <circle cx="18" cy="18" r="0.85" fill="rgba(66,138,254,0.08)" />
-                    </pattern>
-                </defs>
+    <!-- ================= PAGE 1 ================= -->
+    <section class="page p1">
+        <div class="abs hero"></div>
+        <div class="abs lav"></div>
+        <div class="abs dark"></div>
+        <div class="abs logo"><img src="iMAD_logo.svg" alt="iMAD Research" class="imad-logo-img"></div>
+        <div class="abs ttl"><b>CASE STUDY</b><span></span></div>
 
-                <!-- Base Ambient Glows -->
-                <rect width="100%" height="100%" fill="url(#glowTopRight)" />
-                <rect width="100%" height="100%" fill="url(#glowMidLeft)" />
-                <rect width="100%" height="100%" fill="url(#glowMidRight)" />
+        <!-- Background Dot Grid Layer -->
+        <div class="bg-grid"></div>
 
-                <!-- Grid Background -->
-                <rect width="100%" height="100%" fill="url(#dotGrid)" />
+        <!-- Background Random Shapes & Dots Layer (Page 1) -->
+        <svg class="bg-shapes" viewBox="0 0 210 297" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Ambient Soft Glow Gradient -->
+                <radialGradient id="bg-glow-orb-p1" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#428afe" stop-opacity="0.38"/>
+                    <stop offset="60%" stop-color="#0052d6" stop-opacity="0.14"/>
+                    <stop offset="100%" stop-color="#0052d6" stop-opacity="0"/>
+                </radialGradient>
 
-                <!-- Random Circuit Traces & Data Tracks -->
-                <g stroke="#428afe" stroke-width="1" fill="none" opacity="0.35">
-                    <!-- Top-right cluster -->
-                    <path d="M 540 40 H 640 Q 650 40 650 50 V 120 Q 650 130 660 130 H 740" />
-                    <circle cx="740" cy="130" r="3" fill="#428afe" />
-                    <rect x="536" y="38" width="5" height="5" fill="#0052d6" />
-
-                    <path d="M 680 180 V 270 Q 680 280 670 280 H 610 Q 600 280 600 290 V 360" />
-                    <circle cx="600" cy="360" r="3" fill="#0052d6" />
-                    <circle cx="680" cy="180" r="2" fill="#428afe" />
-
-                    <path d="M 720 310 H 770 V 430 Q 770 440 760 440 H 700" />
-                    <circle cx="700" cy="440" r="2.5" fill="#428afe" />
-
-                    <!-- Middle-left cluster -->
-                    <path d="M 40 320 H 120 Q 130 320 130 330 V 410" />
-                    <circle cx="130" cy="410" r="3" fill="#428afe" />
-                    <rect x="36" y="318" width="5" height="5" fill="#428afe" />
-
-                    <path d="M 80 470 V 550 Q 80 560 90 560 H 170 Q 180 560 180 570 V 630" />
-                    <circle cx="180" cy="630" r="2.5" fill="#0052d6" />
-
-                    <!-- Lower center & right -->
-                    <path d="M 660 520 H 710 Q 720 520 720 530 V 660 Q 720 670 710 670 H 640" />
-                    <circle cx="640" cy="670" r="3" fill="#428afe" />
-
-                    <path d="M 140 680 H 220 Q 230 680 230 690 V 780" />
-                    <circle cx="230" cy="780" r="2.5" fill="#428afe" />
+                <!-- Isometric Wireframe 3D Cube -->
+                <g id="bg-iso-cube">
+                    <polygon points="0,-5 4.33,-2.5 0,0 -4.33,-2.5" fill="rgba(66, 138, 254, 0.22)" stroke="#0052d6" stroke-width="0.7"/>
+                    <polygon points="-4.33,-2.5 0,0 0,5 -4.33,2.5" fill="rgba(0, 82, 214, 0.16)" stroke="#0052d6" stroke-width="0.7"/>
+                    <polygon points="0,0 4.33,-2.5 4.33,2.5 0,5" fill="rgba(0, 82, 214, 0.3)" stroke="#0052d6" stroke-width="0.7"/>
+                    <circle cx="0" cy="0" r="0.8" fill="#428afe"/>
                 </g>
-
-                <!-- Floating Concentric Radar Rings & Targets -->
-                <g opacity="0.3">
-                    <circle cx="710" cy="150" r="38" fill="none" stroke="#428afe" stroke-width="0.8"
-                        stroke-dasharray="4 6" />
-                    <circle cx="710" cy="150" r="22" fill="none" stroke="#0052d6" stroke-width="1" />
-                    <circle cx="710" cy="150" r="3" fill="#428afe" />
-                    <line x1="710" y1="106" x2="710" y2="194" stroke="#428afe" stroke-width="0.7"
-                        stroke-dasharray="2 3" />
-                    <line x1="666" y1="150" x2="754" y2="150" stroke="#428afe" stroke-width="0.7"
-                        stroke-dasharray="2 3" />
-
-                    <circle cx="80" cy="620" r="28" fill="none" stroke="#0052d6" stroke-width="0.8"
-                        stroke-dasharray="3 5" />
-                    <circle cx="80" cy="620" r="14" fill="none" stroke="#428afe" stroke-width="1" />
-                    <circle cx="80" cy="620" r="2" fill="#0052d6" />
+                <!-- Concentric Radar / Target Rings -->
+                <g id="bg-radar">
+                    <circle cx="0" cy="0" r="9" fill="rgba(66, 138, 254, 0.1)" stroke="#428afe" stroke-width="0.65" stroke-dasharray="2.5 1.5" opacity="0.8"/>
+                    <circle cx="0" cy="0" r="6" fill="none" stroke="#0052d6" stroke-width="0.6" opacity="0.75"/>
+                    <circle cx="0" cy="2.8" r="2.8" fill="rgba(0, 82, 214, 0.2)" stroke="#0052d6" stroke-width="0.6" stroke-dasharray="1 1" opacity="0.85"/>
+                    <line x1="-11" y1="0" x2="11" y2="0" stroke="#0052d6" stroke-width="0.6" opacity="0.6"/>
+                    <line x1="0" y1="-11" x2="0" y2="11" stroke="#0052d6" stroke-width="0.6" opacity="0.6"/>
+                    <circle cx="0" cy="0" r="1.1" fill="#0052d6" opacity="0.9"/>
                 </g>
-
-                <!-- Floating Random Hexagons -->
-                <g stroke="#428afe" fill="none" opacity="0.32">
-                    <polygon points="680,70 705,55 730,70 730,100 705,115 680,100" stroke-width="1" />
-                    <polygon points="688,75 705,65 722,75 722,95 705,105 688,95" stroke-width="0.6"
-                        stroke-dasharray="2 2" />
-
-                    <polygon points="50,380 70,368 90,380 90,404 70,416 50,404" stroke-width="0.9" />
-                    <polygon points="710,580 730,568 750,580 750,604 730,616 710,604" stroke-width="0.9" />
-                    <polygon points="60,730 85,715 110,730 110,760 85,775 60,760" stroke-width="1" />
+                <!-- Tech Plus Markers -->
+                <g id="bg-plus">
+                    <line x1="-2.4" y1="0" x2="2.4" y2="0" stroke="#0052d6" stroke-width="0.85" stroke-linecap="round" opacity="0.75"/>
+                    <line x1="0" y1="-2.4" x2="0" y2="2.4" stroke="#0052d6" stroke-width="0.85" stroke-linecap="round" opacity="0.75"/>
                 </g>
-
-                <!-- Floating Isometric Cube & Diamond Wireframes -->
-                <g stroke="#0052d6" stroke-width="0.9" fill="none" opacity="0.28">
-                    <g transform="translate(620, 230)">
-                        <polygon points="20,0 40,11 20,22 0,11" fill="rgba(66,138,254,0.08)" />
-                        <polygon points="0,11 20,22 20,44 0,33" />
-                        <polygon points="40,11 20,22 20,44 40,33" />
-                    </g>
-                    <g transform="translate(710, 680)">
-                        <polygon points="18,0 36,18 18,36 0,18" stroke="#428afe" stroke-width="0.9"
-                            fill="rgba(66,138,254,0.06)" />
-                        <polygon points="18,6 30,18 18,30 6,18" stroke="#0052d6" stroke-width="0.6"
-                            stroke-dasharray="2 2" />
-                    </g>
+                <g id="bg-plus-sm">
+                    <line x1="-1.5" y1="0" x2="1.5" y2="0" stroke="#428afe" stroke-width="0.7" stroke-linecap="round" opacity="0.8"/>
+                    <line x1="0" y1="-1.5" x2="0" y2="1.5" stroke="#428afe" stroke-width="0.7" stroke-linecap="round" opacity="0.8"/>
                 </g>
-
-                <!-- Soundwaves / Frequency Pulses -->
-                <g stroke="#428afe" stroke-width="1.3" fill="none" opacity="0.32" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M 600 200 h 12 q 4 -14 8 0 q 4 14 8 0 q 4 -8 8 0 h 16" />
-                    <rect x="652" y="198" width="4" height="4" fill="#428afe" />
-
-                    <path d="M 120 450 h 10 q 5 -12 10 0 q 5 12 10 0 h 14" />
-                    <circle cx="164" cy="450" r="2" fill="#0052d6" />
-
-                    <path d="M 640 470 h 14 q 6 -16 12 0 q 6 16 12 0 h 18" />
+                <!-- 4x4 Dot Matrix Cluster -->
+                <g id="bg-dot-matrix-4x4" opacity="0.7">
+                    <circle cx="0" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="7.5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="2.5" r="0.9" fill="#428afe"/>
+                    <circle cx="5" cy="2.5" r="0.9" fill="#428afe"/>
+                    <circle cx="7.5" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="5" r="0.9" fill="#428afe"/>
+                    <circle cx="5" cy="5" r="0.9" fill="#428afe"/>
+                    <circle cx="7.5" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="7.5" cy="7.5" r="0.75" fill="#0052d6"/>
                 </g>
-
-                <!-- Scattered Halftone Dot Clusters -->
-                <g fill="#428afe" opacity="0.22">
-                    <circle cx="630" cy="90" r="1.2" />
-                    <circle cx="642" cy="85" r="1.5" />
-                    <circle cx="654" cy="80" r="1.8" />
-                    <circle cx="666" cy="75" r="1.4" />
-                    <circle cx="636" cy="102" r="1.4" />
-                    <circle cx="648" cy="97" r="1.8" />
-                    <circle cx="660" cy="92" r="2.0" />
-                    <circle cx="672" cy="87" r="1.5" />
-                    <circle cx="642" cy="114" r="1.3" />
-                    <circle cx="654" cy="109" r="1.6" />
-                    <circle cx="666" cy="104" r="1.8" />
-
-                    <circle cx="45" cy="500" r="1.2" />
-                    <circle cx="55" cy="495" r="1.5" />
-                    <circle cx="65" cy="490" r="1.8" />
-                    <circle cx="50" cy="512" r="1.4" />
-                    <circle cx="60" cy="507" r="1.8" />
-                    <circle cx="70" cy="502" r="2.0" />
-                    <circle cx="55" cy="524" r="1.2" />
-                    <circle cx="65" cy="519" r="1.6" />
-
-                    <circle cx="670" cy="730" r="1.3" />
-                    <circle cx="682" cy="725" r="1.6" />
-                    <circle cx="694" cy="720" r="1.9" />
-                    <circle cx="676" cy="742" r="1.5" />
-                    <circle cx="688" cy="737" r="1.8" />
-                    <circle cx="700" cy="732" r="1.5" />
+                <!-- 3x6 Dot Matrix Cluster -->
+                <g id="bg-dot-matrix-3x6" opacity="0.68">
+                    <circle cx="0" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="2.5" r="0.85" fill="#428afe"/>
+                    <circle cx="5" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="5" r="0.85" fill="#428afe"/>
+                    <circle cx="5" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="7.5" r="0.85" fill="#428afe"/>
+                    <circle cx="5" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="10" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="10" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="10" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="12.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="12.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="12.5" r="0.75" fill="#0052d6"/>
                 </g>
-
-                <!-- Scattered Chevrons >>> and <<< -->
-                <g stroke="#428afe" stroke-width="1.3" fill="none" opacity="0.35" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <g transform="translate(730, 85)">
-                        <polyline points="0,0 4,4 0,8" />
-                        <polyline points="5,0 9,4 5,8" />
-                        <polyline points="10,0 14,4 10,8" />
-                    </g>
-                    <g transform="translate(630, 330)">
-                        <polyline points="4,0 0,4 4,8" />
-                        <polyline points="9,0 5,4 9,8" />
-                        <polyline points="14,0 10,4 14,8" />
-                    </g>
-                    <g transform="translate(150, 360)">
-                        <polyline points="0,0 4,4 0,8" />
-                        <polyline points="5,0 9,4 5,8" />
-                        <polyline points="10,0 14,4 10,8" />
-                    </g>
-                    <g transform="translate(720, 630)">
-                        <polyline points="4,0 0,4 4,8" />
-                        <polyline points="9,0 5,4 9,8" />
-                        <polyline points="14,0 10,4 14,8" />
-                    </g>
+                <!-- Chevrons -->
+                <g id="bg-chevrons">
+                    <polyline points="-2.5,-3 0,-0.5 2.5,-3" fill="none" stroke="#0052d6" stroke-width="0.7" opacity="0.65"/>
+                    <polyline points="-2.5,0 0,2.5 2.5,0" fill="none" stroke="#428afe" stroke-width="0.7" opacity="0.8"/>
+                    <polyline points="-2.5,3 0,5.5 2.5,3" fill="none" stroke="#0052d6" stroke-width="0.7" opacity="0.65"/>
                 </g>
-
-                <!-- Scattered Plus Signs (+) -->
-                <g stroke="#428afe" stroke-width="1.3" stroke-linecap="round" opacity="0.38">
-                    <path d="M 610 65 V 73 M 606 69 H 614" />
-                    <path d="M 750 190 V 198 M 746 194 H 754" />
-                    <path d="M 670 300 V 308 M 666 304 H 674" />
-                    <path d="M 70 280 V 288 M 66 284 H 74" />
-                    <path d="M 160 520 V 528 M 156 524 H 164" />
-                    <path d="M 50 670 V 678 M 46 674 H 54" />
-                    <path d="M 735 480 V 488 M 731 484 H 739" />
-                    <path d="M 640 620 V 628 M 636 624 H 644" />
-                    <path d="M 710 770 V 778 M 706 774 H 714" />
-                    <path d="M 180 730 V 738 M 176 734 H 184" />
+                <!-- Diagonal Hatch Bars -->
+                <g id="bg-hatch" opacity="0.75">
+                    <line x1="-3" y1="-2.5" x2="-0.5" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
+                    <line x1="-1.5" y1="-2.5" x2="1" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
+                    <line x1="0" y1="-2.5" x2="2.5" y2="2.5" stroke="#0052d6" stroke-width="0.8" stroke-linecap="round"/>
+                    <line x1="1.5" y1="-2.5" x2="4" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
+                    <line x1="3" y1="-2.5" x2="5.5" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
                 </g>
-
-                <!-- Diagonal Technical Slashes /// -->
-                <g stroke="#0052d6" stroke-width="1.2" stroke-linecap="round" opacity="0.25">
-                    <line x1="740" y1="240" x2="748" y2="252" />
-                    <line x1="746" y1="240" x2="754" y2="252" />
-                    <line x1="752" y1="240" x2="760" y2="252" />
-
-                    <line x1="40" y1="430" x2="48" y2="442" />
-                    <line x1="46" y1="430" x2="54" y2="442" />
-                    <line x1="52" y1="430" x2="60" y2="442" />
+                <!-- Hexagon Wireframe -->
+                <g id="bg-hex">
+                    <polygon points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3" fill="rgba(66, 138, 254, 0.16)" stroke="#0052d6" stroke-width="0.65" opacity="0.75"/>
+                    <polygon points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75" fill="none" stroke="#428afe" stroke-width="0.55" stroke-dasharray="1.2 1" opacity="0.85"/>
+                    <circle cx="0" cy="0" r="0.9" fill="#0052d6" opacity="0.8"/>
                 </g>
-
-                <!-- Micro Mini Bar Charts & Indicators -->
-                <g opacity="0.28">
-                    <rect x="740" y="378" width="3" height="8" fill="#428afe" rx="0.5" />
-                    <rect x="745" y="372" width="3" height="14" fill="#0052d6" rx="0.5" />
-                    <rect x="750" y="375" width="3" height="11" fill="#428afe" rx="0.5" />
-                    <rect x="755" y="368" width="3" height="18" fill="#0052d6" rx="0.5" />
-
-                    <rect x="95" y="718" width="3" height="8" fill="#428afe" rx="0.5" />
-                    <rect x="100" y="714" width="3" height="12" fill="#0052d6" rx="0.5" />
-                    <rect x="105" y="710" width="3" height="16" fill="#428afe" rx="0.5" />
+                <!-- Diamond Wireframe -->
+                <g id="bg-diamond">
+                    <rect x="-3.5" y="-3.5" width="7" height="7" rx="0.4" transform="rotate(45)" fill="rgba(0, 82, 214, 0.14)" stroke="#0052d6" stroke-width="0.65" opacity="0.75"/>
+                    <circle cx="0" cy="0" r="1.8" fill="none" stroke="#428afe" stroke-width="0.5" opacity="0.85"/>
+                    <circle cx="0" cy="0" r="0.8" fill="#0052d6" opacity="0.8"/>
                 </g>
-            </svg>
+                <!-- Vertical Circuit Trace -->
+                <g id="bg-circuit-v" opacity="0.75">
+                    <path d="M 0 0 L 0 10 L 4 14 L 4 24" fill="none" stroke="#0052d6" stroke-width="0.65"/>
+                    <circle cx="0" cy="0" r="1.1" fill="#fff" stroke="#0052d6" stroke-width="0.65"/>
+                    <circle cx="4" cy="14" r="0.8" fill="#428afe"/>
+                    <circle cx="4" cy="24" r="1.1" fill="#0052d6"/>
+                </g>
+                <!-- Sine Wave -->
+                <g id="bg-sine" opacity="0.75">
+                    <path d="M 0 0 Q 3 -2.2 6 0 T 12 0 T 18 0 T 24 0 T 30 0" fill="none" stroke="#428afe" stroke-width="0.75"/>
+                    <circle cx="0" cy="0" r="0.9" fill="#0052d6"/>
+                    <circle cx="30" cy="0" r="0.9" fill="#0052d6"/>
+                </g>
+            </defs>
+
+            <!-- Ambient Soft Glow Orbs -->
+            <circle cx="105" cy="144" r="18" fill="url(#bg-glow-orb-p1)"/>
+            <circle cx="205" cy="88" r="14" fill="url(#bg-glow-orb-p1)"/>
+
+            <!-- Page 1 Central Gutter Elements (x: 100.5 to 109.5) -->
+            <use href="#bg-dot-matrix-3x6" x="102.5" y="44" />
+            <use href="#bg-plus-sm" x="105" y="66" />
+            <g transform="translate(105, 86)"><use href="#bg-iso-cube" /></g>
+            <g transform="translate(103, 106)"><use href="#bg-circuit-v" /></g>
+            <g transform="translate(105, 144)"><use href="#bg-radar" /></g>
+            <use href="#bg-plus" x="105" y="168" />
+            <g transform="translate(105, 188)"><use href="#bg-hex" /></g>
+            <g transform="translate(105, 212)"><use href="#bg-hatch" /></g>
+            <g transform="translate(105, 232)"><use href="#bg-chevrons" /></g>
+            <use href="#bg-dot-matrix-4x4" x="101.5" y="248" />
+
+            <!-- Page 1 Left Margin Elements (x: 0 to 9) -->
+            <use href="#bg-plus" x="4.5" y="52" />
+            <g transform="translate(4.5, 96)"><use href="#bg-chevrons" transform="rotate(90)" /></g>
+            <g transform="translate(2, 134)"><use href="#bg-dot-matrix-3x6" transform="scale(0.8)" /></g>
+            <use href="#bg-plus-sm" x="4.5" y="172" />
+            <g transform="translate(4.5, 205)"><use href="#bg-diamond" transform="scale(0.85)" /></g>
+            <use href="#bg-plus" x="4.5" y="242" />
+
+            <!-- Page 1 Right Margin Elements (x: 201 to 210) -->
+            <use href="#bg-plus-sm" x="205.5" y="48" />
+            <g transform="translate(205.5, 88)"><use href="#bg-hatch" transform="scale(0.85)" /></g>
+            <use href="#bg-plus" x="205.5" y="128" />
+            <g transform="translate(205.5, 168)"><use href="#bg-radar" transform="scale(0.65)" /></g>
+            <g transform="translate(205.5, 210)"><use href="#bg-chevrons" /></g>
+            <use href="#bg-plus" x="205.5" y="250" />
+
+            <!-- Page 1 Bottom Open Space (above footer, y: 265 to 278) -->
+            <g transform="translate(25, 270)"><use href="#bg-sine" /></g>
+            <use href="#bg-plus-sm" x="65" y="270" />
+            <g transform="translate(105, 270)"><use href="#bg-diamond" /></g>
+            <use href="#bg-plus-sm" x="145" y="270" />
+            <g transform="translate(155, 268)"><use href="#bg-sine" /></g>
+            <use href="#bg-plus" x="195" y="270" />
+        </svg>
+
+        <div class="abs cols">
+            <div>
+                <div class="card">
+                    <h2 class="h">Definition case study ?</h2>
+                    <span class="txt s45"></span>
+                </div>
+
+                <div class="card criteria-card">
+                    <h2 class="h">Criteria</h2>
+                    <span class="txt s24"></span>
+
+                    <div class="row row-card">
+                        <div class="ic"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+                            </svg></div>
+                        <div>
+                            <div class="sub"></div><span class="txt"></span>
+                        </div>
+                    </div>
+                    <div class="row row-card">
+                        <div class="ic"><svg viewBox="0 0 24 24">
+                                <rect x="5" y="3" width="14" height="18" rx="2" />
+                                <path d="M9 8h6M9 12h6M9 16h4" />
+                            </svg></div>
+                        <div>
+                            <div class="sub"></div><span class="txt"></span>
+                        </div>
+                    </div>
+                    <div class="row row-card">
+                        <div class="ic"><svg viewBox="0 0 24 24">
+                                <circle cx="10.5" cy="10.5" r="6" />
+                                <path d="M15 15l6 6" />
+                            </svg></div>
+                        <div>
+                            <div class="sub"></div><span class="txt"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card contact-card">
+                    <div class="contact">
+                        <h3>Contact us:</h3>
+                        <p>Company address<br>companyemail@gmail.com<br>+012 345 678 90</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card">
+                    <h2 class="h">Result</h2>
+                    <span class="txt s42"></span>
+                    <div class="res">
+                        <div>
+
+                            <div class="cap"></div><span class="txt"></span>
+                        </div>
+                        <div>
+
+                            <div class="cap"></div><span class="txt"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concl">
+                    <h3><svg viewBox="0 0 24 24">
+                            <path d="M4 20V10M10 20V4M16 20v-8M22 20H2" />
+                        </svg>Conclusion</h3>
+                    <span class="txt s48"></span>
+                </div>
+
+                <div class="card">
+                    <span class="txt quote"></span>
+                    <div class="lorem"></div>
+                </div>
+            </div>
         </div>
 
-        <!-- Top Accent Bar -->
-        <div class="top-accent-bar"></div>
-
-        <!-- Wavy Top Section (Header Canopy) -->
-        <section class="wavy-top-section">
-            <div class="wavy-top-body">
-                <div class="logo-container">
-                    <img src="iMAD_logo.svg" alt="iMAD Research Logo" class="logo">
-                </div>
-            </div>
-            <div class="wavy-top-separator">
-                <svg class="wavy-svg" viewBox="0 0 1440 130" preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg">
+        <div class="abs foot">
+            <div class="abs l"></div>
+            <div class="abs l2"></div>
+        </div>
+        <div class="abs soc">
+            <i><svg viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg></i>
+            <i><svg viewBox="0 0 24 24">
                     <path
-                        d="M 0 0 L 1440 0 L 1440 28 C 1380 24 1280 10 1150 10 C 940 10 740 90 540 90 C 360 90 240 25 0 25 Z"
-                        fill="rgba(66, 138, 254, 0.35)" />
-                    <path
-                        d="M 0 0 L 1440 0 L 1440 42 C 1370 38 1280 25 1140 25 C 930 25 730 105 530 105 C 350 105 220 45 0 45 Z"
-                        fill="#0052d6" />
-                    <path d="M 0 45 C 220 45 350 105 530 105 C 730 105 930 25 1140 25 C 1280 25 1370 38 1440 42"
-                        fill="none" stroke="#428afe" stroke-width="3" stroke-linecap="round" />
-                </svg>
-            </div>
-        </section>
+                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg></i>
+            <i><svg viewBox="0 0 24 24">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                </svg></i>
+        </div>
+        <div class="abs web">www.imadresearch.com</div>
+    </section>
 
-        <!-- Header -->
-        <header class="header">
-            <div class="header-line"></div>
-            <h1 class="case-study-title">Case Study</h1>
-            <div class="category-tag template-hidden">
-                <span class="tag-text template-hidden">ELECTRONICS – GAMING</span>
-            </div>
-        </header>
+    <!-- ================= PAGE 2 ================= -->
+    <section class="page p2">
+        <div class="abs hero"></div>
+        <div class="abs lav"></div>
+        <div class="abs dark"></div>
+        <div class="abs logo"><img src="iMAD_logo.svg" alt="iMAD Research" class="imad-logo-img"></div>
+        <div class="abs ttl"><b>CASE STUDY</b><span></span></div>
 
-        <!-- Main Content -->
-        <main class="content">
-            <div class="content-grid">
-                <!-- Left Column -->
-                <div class="left-column">
-                    <!-- Objectives -->
-                    <div class="info-block">
-                        <div class="block-header">
-                            <div class="block-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <circle cx="12" cy="12" r="6" />
-                                    <circle cx="12" cy="12" r="2" />
-                                </svg>
-                            </div>
-                            <h2 class="block-title">Objectives</h2>
+        <!-- Background Dot Grid Layer -->
+        <div class="bg-grid"></div>
+
+        <!-- Background Random Shapes & Dots Layer (Page 2) -->
+        <svg class="bg-shapes" viewBox="0 0 210 297" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Ambient Soft Glow Gradient -->
+                <radialGradient id="bg-glow-orb-p2" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#428afe" stop-opacity="0.38"/>
+                    <stop offset="60%" stop-color="#0052d6" stop-opacity="0.14"/>
+                    <stop offset="100%" stop-color="#0052d6" stop-opacity="0"/>
+                </radialGradient>
+
+                <!-- Isometric Wireframe 3D Cube -->
+                <g id="bg-iso-cube-p2">
+                    <polygon points="0,-5 4.33,-2.5 0,0 -4.33,-2.5" fill="rgba(66, 138, 254, 0.22)" stroke="#0052d6" stroke-width="0.7"/>
+                    <polygon points="-4.33,-2.5 0,0 0,5 -4.33,2.5" fill="rgba(0, 82, 214, 0.16)" stroke="#0052d6" stroke-width="0.7"/>
+                    <polygon points="0,0 4.33,-2.5 4.33,2.5 0,5" fill="rgba(0, 82, 214, 0.3)" stroke="#0052d6" stroke-width="0.7"/>
+                    <circle cx="0" cy="0" r="0.8" fill="#428afe"/>
+                </g>
+                <!-- Concentric Radar / Target Rings -->
+                <g id="bg-radar-p2">
+                    <circle cx="0" cy="0" r="9" fill="rgba(66, 138, 254, 0.1)" stroke="#428afe" stroke-width="0.65" stroke-dasharray="2.5 1.5" opacity="0.8"/>
+                    <circle cx="0" cy="0" r="6" fill="none" stroke="#0052d6" stroke-width="0.6" opacity="0.75"/>
+                    <circle cx="0" cy="2.8" r="2.8" fill="rgba(0, 82, 214, 0.2)" stroke="#0052d6" stroke-width="0.6" stroke-dasharray="1 1" opacity="0.85"/>
+                    <line x1="-11" y1="0" x2="11" y2="0" stroke="#0052d6" stroke-width="0.6" opacity="0.6"/>
+                    <line x1="0" y1="-11" x2="0" y2="11" stroke="#0052d6" stroke-width="0.6" opacity="0.6"/>
+                    <circle cx="0" cy="0" r="1.1" fill="#0052d6" opacity="0.9"/>
+                </g>
+                <!-- Tech Plus Markers -->
+                <g id="bg-plus-p2">
+                    <line x1="-2.4" y1="0" x2="2.4" y2="0" stroke="#0052d6" stroke-width="0.85" stroke-linecap="round" opacity="0.75"/>
+                    <line x1="0" y1="-2.4" x2="0" y2="2.4" stroke="#0052d6" stroke-width="0.85" stroke-linecap="round" opacity="0.75"/>
+                </g>
+                <g id="bg-plus-sm-p2">
+                    <line x1="-1.5" y1="0" x2="1.5" y2="0" stroke="#428afe" stroke-width="0.7" stroke-linecap="round" opacity="0.8"/>
+                    <line x1="0" y1="-1.5" x2="0" y2="1.5" stroke="#428afe" stroke-width="0.7" stroke-linecap="round" opacity="0.8"/>
+                </g>
+                <!-- 4x4 Dot Matrix Cluster -->
+                <g id="bg-dot-matrix-4x4-p2" opacity="0.7">
+                    <circle cx="0" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="7.5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="2.5" r="0.9" fill="#428afe"/>
+                    <circle cx="5" cy="2.5" r="0.9" fill="#428afe"/>
+                    <circle cx="7.5" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="5" r="0.9" fill="#428afe"/>
+                    <circle cx="5" cy="5" r="0.9" fill="#428afe"/>
+                    <circle cx="7.5" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="7.5" cy="7.5" r="0.75" fill="#0052d6"/>
+                </g>
+                <!-- 3x6 Dot Matrix Cluster -->
+                <g id="bg-dot-matrix-3x6-p2" opacity="0.68">
+                    <circle cx="0" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="0" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="2.5" r="0.85" fill="#428afe"/>
+                    <circle cx="5" cy="2.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="5" r="0.85" fill="#428afe"/>
+                    <circle cx="5" cy="5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="7.5" r="0.85" fill="#428afe"/>
+                    <circle cx="5" cy="7.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="10" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="10" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="10" r="0.75" fill="#0052d6"/>
+                    <circle cx="0" cy="12.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="2.5" cy="12.5" r="0.75" fill="#0052d6"/>
+                    <circle cx="5" cy="12.5" r="0.75" fill="#0052d6"/>
+                </g>
+                <!-- Chevrons -->
+                <g id="bg-chevrons-p2">
+                    <polyline points="-2.5,-3 0,-0.5 2.5,-3" fill="none" stroke="#0052d6" stroke-width="0.7" opacity="0.65"/>
+                    <polyline points="-2.5,0 0,2.5 2.5,0" fill="none" stroke="#428afe" stroke-width="0.7" opacity="0.8"/>
+                    <polyline points="-2.5,3 0,5.5 2.5,3" fill="none" stroke="#0052d6" stroke-width="0.7" opacity="0.65"/>
+                </g>
+                <!-- Diagonal Hatch Bars -->
+                <g id="bg-hatch-p2" opacity="0.75">
+                    <line x1="-3" y1="-2.5" x2="-0.5" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
+                    <line x1="-1.5" y1="-2.5" x2="1" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
+                    <line x1="0" y1="-2.5" x2="2.5" y2="2.5" stroke="#0052d6" stroke-width="0.8" stroke-linecap="round"/>
+                    <line x1="1.5" y1="-2.5" x2="4" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
+                    <line x1="3" y1="-2.5" x2="5.5" y2="2.5" stroke="#428afe" stroke-width="0.75" stroke-linecap="round"/>
+                </g>
+                <!-- Hexagon Wireframe -->
+                <g id="bg-hex-p2">
+                    <polygon points="0,-6 5.2,-3 5.2,3 0,6 -5.2,3 -5.2,-3" fill="rgba(66, 138, 254, 0.16)" stroke="#0052d6" stroke-width="0.65" opacity="0.75"/>
+                    <polygon points="0,-3.5 3,-1.75 3,1.75 0,3.5 -3,1.75 -3,-1.75" fill="none" stroke="#428afe" stroke-width="0.55" stroke-dasharray="1.2 1" opacity="0.85"/>
+                    <circle cx="0" cy="0" r="0.9" fill="#0052d6" opacity="0.8"/>
+                </g>
+                <!-- Diamond Wireframe -->
+                <g id="bg-diamond-p2">
+                    <rect x="-3.5" y="-3.5" width="7" height="7" rx="0.4" transform="rotate(45)" fill="rgba(0, 82, 214, 0.14)" stroke="#0052d6" stroke-width="0.65" opacity="0.75"/>
+                    <circle cx="0" cy="0" r="1.8" fill="none" stroke="#428afe" stroke-width="0.5" opacity="0.85"/>
+                    <circle cx="0" cy="0" r="0.8" fill="#0052d6" opacity="0.8"/>
+                </g>
+                <!-- Vertical Circuit Trace -->
+                <g id="bg-circuit-v-p2" opacity="0.75">
+                    <path d="M 0 0 L 0 10 L 4 14 L 4 24" fill="none" stroke="#0052d6" stroke-width="0.65"/>
+                    <circle cx="0" cy="0" r="1.1" fill="#fff" stroke="#0052d6" stroke-width="0.65"/>
+                    <circle cx="4" cy="14" r="0.8" fill="#428afe"/>
+                    <circle cx="4" cy="24" r="1.1" fill="#0052d6"/>
+                </g>
+                <!-- Sine Wave -->
+                <g id="bg-sine-p2" opacity="0.75">
+                    <path d="M 0 0 Q 3 -2.2 6 0 T 12 0 T 18 0 T 24 0 T 30 0" fill="none" stroke="#428afe" stroke-width="0.75"/>
+                    <circle cx="0" cy="0" r="0.9" fill="#0052d6"/>
+                    <circle cx="30" cy="0" r="0.9" fill="#0052d6"/>
+                </g>
+            </defs>
+
+            <!-- Ambient Soft Glow Orbs -->
+            <circle cx="127.5" cy="120" r="18" fill="url(#bg-glow-orb-p2)"/>
+            <circle cx="170" cy="226" r="28" fill="url(#bg-glow-orb-p2)"/>
+
+            <!-- Page 2 Left Margin Elements (x: 0 to 9) -->
+            <use href="#bg-plus-p2" x="4.5" y="55" />
+            <g transform="translate(4.5, 102)"><use href="#bg-hatch-p2" transform="scale(0.85)" /></g>
+            <use href="#bg-plus-sm-p2" x="4.5" y="145" />
+            <g transform="translate(4.5, 185)"><use href="#bg-chevrons-p2" transform="rotate(90)" /></g>
+            <use href="#bg-plus-p2" x="4.5" y="225" />
+            <g transform="translate(4.5, 258)"><use href="#bg-diamond-p2" transform="scale(0.8)" /></g>
+
+            <!-- Page 2 Center Gutter Elements (x: 123 to 132, center ~127.5) -->
+            <use href="#bg-dot-matrix-3x6-p2" x="125" y="46" />
+            <use href="#bg-plus-sm-p2" x="127.5" y="70" />
+            <g transform="translate(127.5, 92)"><use href="#bg-iso-cube-p2" /></g>
+            <g transform="translate(127.5, 120)"><use href="#bg-radar-p2" transform="scale(0.9)" /></g>
+            <g transform="translate(125.5, 144)"><use href="#bg-circuit-v-p2" /></g>
+            <g transform="translate(127.5, 180)"><use href="#bg-hex-p2" transform="scale(0.9)" /></g>
+            <g transform="translate(127.5, 206)"><use href="#bg-hatch-p2" /></g>
+            <g transform="translate(127.5, 230)"><use href="#bg-chevrons-p2" /></g>
+            <use href="#bg-dot-matrix-4x4-p2" x="124" y="250" />
+
+            <!-- Page 2 Right Margin Elements (x: 201 to 210) -->
+            <use href="#bg-plus-sm-p2" x="205.5" y="50" />
+            <g transform="translate(203, 90)"><use href="#bg-dot-matrix-3x6-p2" transform="scale(0.8)" /></g>
+            <use href="#bg-plus-p2" x="205.5" y="132" />
+            <g transform="translate(205.5, 168)"><use href="#bg-chevrons-p2" /></g>
+
+            <!-- Page 2 Bottom-Left Strip (below Call Us, y: 271) -->
+            <g transform="translate(25, 272)"><use href="#bg-sine-p2" /></g>
+            <use href="#bg-plus-sm-p2" x="70" y="272" />
+            <g transform="translate(95, 272)"><use href="#bg-diamond-p2" /></g>
+
+            <!-- ================= PAGE 2 RIGHT COLUMN OPEN TECH CLUSTER (x: 135-200, y: 175-278) ================= -->
+            <!-- Framing Corner Brackets -->
+            <path d="M 136 182 L 136 177 L 141 177" fill="none" stroke="#0052d6" stroke-width="0.5" opacity="0.6"/>
+            <path d="M 197 182 L 197 177 L 192 177" fill="none" stroke="#0052d6" stroke-width="0.5" opacity="0.6"/>
+            <path d="M 197 268 L 197 273 L 192 273" fill="none" stroke="#0052d6" stroke-width="0.5" opacity="0.6"/>
+            <path d="M 136 268 L 136 273 L 141 273" fill="none" stroke="#0052d6" stroke-width="0.5" opacity="0.6"/>
+
+            <!-- Micro Tech Reference Tags -->
+            <text x="137" y="181" font-family="'Barlow', sans-serif" font-size="2.4" font-weight="700" fill="#0052d6" opacity="0.6" letter-spacing="0.4">SYSTEM MATRIX</text>
+            <text x="178" y="272" font-family="'Barlow', sans-serif" font-size="2.2" font-weight="700" fill="#428afe" opacity="0.6" letter-spacing="0.3">GRID // 02</text>
+
+            <!-- Circuit Trace Highway -->
+            <g opacity="0.65">
+                <path d="M 137 187 L 145 187 L 152 194 L 152 210 L 160 218 L 160 244 L 172 244 L 178 250 L 178 266" fill="none" stroke="#0052d6" stroke-width="0.6"/>
+                <circle cx="137" cy="187" r="1.3" fill="none" stroke="#0052d6" stroke-width="0.6"/>
+                <circle cx="152" cy="194" r="0.9" fill="#428afe"/>
+                <circle cx="160" cy="218" r="1.0" fill="#0052d6"/>
+                <circle cx="172" cy="244" r="0.9" fill="#428afe"/>
+                <circle cx="178" cy="266" r="1.4" fill="none" stroke="#428afe" stroke-width="0.6"/>
+                <circle cx="178" cy="266" r="0.8" fill="#0052d6"/>
+            </g>
+
+            <!-- Isometric 3D Cubes Cluster -->
+            <g transform="translate(174, 196) scale(1.4)"><use href="#bg-iso-cube-p2" /></g>
+            <g transform="translate(188, 208) scale(0.95)"><use href="#bg-iso-cube-p2" /></g>
+            <g transform="translate(162, 208) scale(0.7)"><use href="#bg-iso-cube-p2" /></g>
+
+            <!-- Concentric Radar / Orbit Rings -->
+            <g transform="translate(150, 234) scale(1.3)"><use href="#bg-radar-p2" /></g>
+
+            <!-- 6x6 Halftone Dot Matrix -->
+            <g transform="translate(168, 232)" opacity="0.7">
+                <circle cx="0" cy="0" r="0.7" fill="#0052d6"/>
+                <circle cx="2.6" cy="0" r="0.7" fill="#0052d6"/>
+                <circle cx="5.2" cy="0" r="0.75" fill="#0052d6"/>
+                <circle cx="7.8" cy="0" r="0.75" fill="#0052d6"/>
+                <circle cx="10.4" cy="0" r="0.7" fill="#0052d6"/>
+                <circle cx="13" cy="0" r="0.7" fill="#0052d6"/>
+
+                <circle cx="0" cy="2.6" r="0.7" fill="#0052d6"/>
+                <circle cx="2.6" cy="2.6" r="0.85" fill="#428afe"/>
+                <circle cx="5.2" cy="2.6" r="0.95" fill="#428afe"/>
+                <circle cx="7.8" cy="2.6" r="0.95" fill="#428afe"/>
+                <circle cx="10.4" cy="2.6" r="0.85" fill="#428afe"/>
+                <circle cx="13" cy="2.6" r="0.7" fill="#0052d6"/>
+
+                <circle cx="0" cy="5.2" r="0.75" fill="#0052d6"/>
+                <circle cx="2.6" cy="5.2" r="0.95" fill="#428afe"/>
+                <circle cx="5.2" cy="5.2" r="1.1" fill="#0052d6"/>
+                <circle cx="7.8" cy="5.2" r="1.1" fill="#0052d6"/>
+                <circle cx="10.4" cy="5.2" r="0.95" fill="#428afe"/>
+                <circle cx="13" cy="5.2" r="0.75" fill="#0052d6"/>
+
+                <circle cx="0" cy="7.8" r="0.75" fill="#0052d6"/>
+                <circle cx="2.6" cy="7.8" r="0.95" fill="#428afe"/>
+                <circle cx="5.2" cy="7.8" r="1.1" fill="#0052d6"/>
+                <circle cx="7.8" cy="7.8" r="1.1" fill="#0052d6"/>
+                <circle cx="10.4" cy="7.8" r="0.95" fill="#428afe"/>
+                <circle cx="13" cy="7.8" r="0.75" fill="#0052d6"/>
+
+                <circle cx="0" cy="10.4" r="0.7" fill="#0052d6"/>
+                <circle cx="2.6" cy="10.4" r="0.85" fill="#428afe"/>
+                <circle cx="5.2" cy="10.4" r="0.95" fill="#428afe"/>
+                <circle cx="7.8" cy="10.4" r="0.95" fill="#428afe"/>
+                <circle cx="10.4" cy="10.4" r="0.85" fill="#428afe"/>
+                <circle cx="13" cy="10.4" r="0.7" fill="#0052d6"/>
+
+                <circle cx="0" cy="13" r="0.7" fill="#0052d6"/>
+                <circle cx="2.6" cy="13" r="0.7" fill="#0052d6"/>
+                <circle cx="5.2" cy="13" r="0.75" fill="#0052d6"/>
+                <circle cx="7.8" cy="13" r="0.75" fill="#0052d6"/>
+                <circle cx="10.4" cy="13" r="0.7" fill="#0052d6"/>
+                <circle cx="13" cy="13" r="0.7" fill="#0052d6"/>
+            </g>
+
+            <!-- Geometric Hex & Diamond in Right Void -->
+            <g transform="translate(189, 238)"><use href="#bg-hex-p2" transform="scale(1.1)" /></g>
+            <g transform="translate(142, 210)"><use href="#bg-diamond-p2" /></g>
+
+            <!-- Sine Wave across base of right void -->
+            <g transform="translate(138, 265)"><use href="#bg-sine-p2" transform="scale(0.9)" /></g>
+
+            <!-- Scattered Plus Markers -->
+            <use href="#bg-plus-p2" x="142" y="196" />
+            <use href="#bg-plus-sm-p2" x="193" y="188" />
+            <use href="#bg-plus-p2" x="194" y="258" />
+            <use href="#bg-plus-sm-p2" x="146" y="252" />
+        </svg>
+
+        <div class="abs left">
+            <div class="card">
+                <h2 class="h">About us</h2>
+                <p class="about-desc">iMAD Research is a global market research company providing data collection services, including B2B, Healthcare, and Consumer panels. We deliver high-quality data to help businesses make informed decisions, connecting with over 2.5 million people worldwide.</p>
+
+                <div class="ab-grid">
+                    <div class="row">
+                        <div class="ic"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
+                            </svg></div>
+                        <div>
+                            <div class="sub"></div><span class="txt"></span>
                         </div>
-                        <p class="block-text template-hidden">Gaming console concepts evaluation for features, pricing,
-                            and performance
-                            & identify winner for international markets beyond Japan</p>
                     </div>
-
-                    <!-- Methodology -->
-                    <div class="info-block">
-                        <div class="block-header">
-                            <div class="block-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                                </svg>
-                            </div>
-                            <h2 class="block-title">Methodology</h2>
-                        </div>
-                        <p class="block-text template-hidden">Mix methodology – Quantitative Online surveys and
-                            Qualitative Focused
-                            Groups and In-Depth Interviews</p>
-                    </div>
-
-                    <!-- Sample -->
-                    <div class="info-block">
-                        <div class="block-header">
-                            <div class="block-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                </svg>
-                            </div>
-                            <h2 class="block-title">Sample</h2>
-                        </div>
-                        <p class="block-text template-hidden">2500 Quantitative & 150 Qualitative – Casual, hardcore,
-                            family and social
-                            gamers</p>
-                    </div>
-
-                    <!-- Locations -->
-                    <div class="info-block">
-                        <div class="block-header">
-                            <div class="block-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>
-                            </div>
-                            <h2 class="block-title">Locations</h2>
-                        </div>
-                        <p class="block-text template-hidden">Multi-countries – North America, LATAM, Europe, Asia
-                            Pacific</p>
-                    </div>
-                </div>
-
-                <!-- Right Column - Client Speaks -->
-                <div class="right-column">
-                    <div class="client-speaks-card">
-                        <div class="quote-icon">
-                            <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
+                    <div class="row">
+                        <div class="ic"><svg viewBox="0 0 24 24">
                                 <path
-                                    d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-                            </svg>
+                                    d="M12 3a6 6 0 0 0-4 10.500V16h8v-2.500A6 6 0 0 0 12 3zM9.500 19h5M10.500 21.500h3" />
+                            </svg></div>
+                        <div>
+                            <div class="sub"></div><span class="txt"></span>
                         </div>
-                        <h3 class="client-speaks-title">Client Speaks!</h3>
-                        <p class="client-quote template-hidden">"iMAD's impact is gaining insights for social. Used for
-                            selection of
-                            innovative ideas for our marketing and communication strategy."</p>
-                        <p class="client-attribution template-hidden">— Insights Lead — Consoles</p>
+                    </div>
+                    <div class="row">
+                        <div class="ic"><svg viewBox="0 0 24 24">
+                                <path d="M4 5h16v11H9l-5 4z" />
+                                <path d="M8 9h8M8 12h5" />
+                            </svg></div>
+                        <div>
+                            <div class="sub"></div><span class="txt"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ic"><svg viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="12" rx="1" />
+                                <path d="M8 13l3-4 3 2 3-4M12 16v4M8 20h8" />
+                            </svg></div>
+                        <div>
+                            <div class="sub"></div><span class="txt"></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
 
-        <!-- Wavy Bottom Section (About Us + Contacts + Copyright) -->
-        <section class="wavy-bottom-section">
-            <div class="wavy-separator">
-                <svg class="wavy-svg" viewBox="0 0 1440 130" preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M 0 25 C 240 25 360 90 540 90 C 740 90 940 10 1150 10 C 1280 10 1380 24 1440 28 L 1440 130 L 0 130 Z"
-                        fill="rgba(66, 138, 254, 0.35)" />
-                    <path
-                        d="M 0 45 C 220 45 350 105 530 105 C 730 105 930 25 1140 25 C 1280 25 1370 38 1440 42 L 1440 130 L 0 130 Z"
-                        fill="#0052d6" />
-                    <path d="M 0 45 C 220 45 350 105 530 105 C 730 105 930 25 1140 25 C 1280 25 1370 38 1440 42"
-                        fill="none" stroke="#428afe" stroke-width="3" stroke-linecap="round" />
-                </svg>
-            </div>
-            <div class="wavy-body">
-                <div class="about-block">
-                    <h2 class="about-title">About us</h2>
-                    <p class="about-text">iMAD Research is a global market research company providing data collection
-                        services, including B2B, Healthcare, and Consumer panels. We deliver high-quality data to help
-                        businesses make informed decisions, connecting with over 2.5 million people worldwide.</p>
+            <div class="card challenge">
+                <h2 class="h">Challenge</h2>
+                <div class="item">
+                    <div class="n"><i>01</i><b></b></div><span class="txt"></span>
                 </div>
-                <div class="footer-contacts">
-                    <div class="footer-item">
-                        <div class="footer-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                        </div>
-                        <span class="footer-text">(203) 491-7068</span>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="2" y1="12" x2="22" y2="12" />
-                                <path
-                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                            </svg>
-                        </div>
-                        <span class="footer-text">www.imad.com</span>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                        </div>
-                        <span class="footer-text">US, India, UK</span>
-                    </div>
+                <div class="item">
+                    <div class="n"><i>02</i><b></b></div><span class="txt"></span>
                 </div>
-                <div class="footer-copyright">
-                    <p>© iMAD Research copyright.</p>
+                <div class="item">
+                    <div class="n"><i>03</i><b></b></div><span class="txt"></span>
                 </div>
             </div>
-        </section>
-    </div>
 
-    <!-- ============================================
-         PAGE 2: Approach, Solutions & Support, iMAD Effect, Results
-         ============================================ -->
-    <div class="a4-page page-2">
-        <!-- Background Decorative Elements -->
-        <div class="bg-pattern">
-            <svg class="circuit-svg" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <!-- Ambient Glow Gradients -->
-                    <radialGradient id="glowTopLeft2" cx="20%" cy="15%" r="38%">
-                        <stop offset="0%" stop-color="#428afe" stop-opacity="0.10" />
-                        <stop offset="100%" stop-color="#428afe" stop-opacity="0" />
-                    </radialGradient>
-                    <radialGradient id="glowMidRight2" cx="82%" cy="45%" r="40%">
-                        <stop offset="0%" stop-color="#0052d6" stop-opacity="0.08" />
-                        <stop offset="100%" stop-color="#0052d6" stop-opacity="0" />
-                    </radialGradient>
-                    <radialGradient id="glowBottomLeft2" cx="18%" cy="75%" r="35%">
-                        <stop offset="0%" stop-color="#428afe" stop-opacity="0.09" />
-                        <stop offset="100%" stop-color="#428afe" stop-opacity="0" />
-                    </radialGradient>
+            <div class="card method">
+                <h2 class="h">Method</h2>
+                <span class="txt s24"></span>
+            </div>
 
-                    <!-- Dot grid pattern -->
-                    <pattern id="dotGrid2" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
-                        <circle cx="18" cy="18" r="0.85" fill="rgba(66,138,254,0.08)" />
-                    </pattern>
-                </defs>
-
-                <!-- Base Ambient Glows -->
-                <rect width="100%" height="100%" fill="url(#glowTopLeft2)" />
-                <rect width="100%" height="100%" fill="url(#glowMidRight2)" />
-                <rect width="100%" height="100%" fill="url(#glowBottomLeft2)" />
-
-                <!-- Grid Background -->
-                <rect width="100%" height="100%" fill="url(#dotGrid2)" />
-
-                <!-- Random Circuit Traces & Data Tracks -->
-                <g stroke="#428afe" stroke-width="1" fill="none" opacity="0.35">
-                    <!-- Top-left cluster -->
-                    <path d="M 60 70 H 160 Q 170 70 170 80 V 160 Q 170 170 180 170 H 260" />
-                    <circle cx="260" cy="170" r="3" fill="#428afe" />
-                    <rect x="56" y="68" width="5" height="5" fill="#0052d6" />
-
-                    <!-- Top-right cluster -->
-                    <path d="M 620 50 H 700 Q 710 50 710 60 V 170" />
-                    <circle cx="710" cy="170" r="3" fill="#0052d6" />
-                    <circle cx="620" cy="50" r="2" fill="#428afe" />
-
-                    <!-- Mid-left cluster -->
-                    <path d="M 40 410 H 110 Q 120 410 120 420 V 500 Q 120 510 130 510 H 190" />
-                    <circle cx="190" cy="510" r="2.5" fill="#428afe" />
-
-                    <!-- Mid-right cluster -->
-                    <path d="M 660 370 V 450 Q 660 460 650 460 H 580 Q 570 460 570 470 V 540" />
-                    <circle cx="570" cy="540" r="3" fill="#0052d6" />
-
-                    <!-- Lower clusters -->
-                    <path d="M 720 610 H 650 Q 640 610 640 620 V 710 Q 640 720 630 720 H 570" />
-                    <circle cx="570" cy="720" r="2.5" fill="#428afe" />
-
-                    <path d="M 80 650 V 740 Q 80 750 90 750 H 180" />
-                    <circle cx="180" cy="750" r="3" fill="#0052d6" />
-                </g>
-
-                <!-- Floating Concentric Radar Rings & Targets -->
-                <g opacity="0.3">
-                    <circle cx="110" cy="180" r="36" fill="none" stroke="#428afe" stroke-width="0.8"
-                        stroke-dasharray="4 6" />
-                    <circle cx="110" cy="180" r="20" fill="none" stroke="#0052d6" stroke-width="1" />
-                    <circle cx="110" cy="180" r="3" fill="#428afe" />
-                    <line x1="110" y1="138" x2="110" y2="222" stroke="#428afe" stroke-width="0.7"
-                        stroke-dasharray="2 3" />
-                    <line x1="68" y1="180" x2="152" y2="180" stroke="#428afe" stroke-width="0.7"
-                        stroke-dasharray="2 3" />
-
-                    <circle cx="715" cy="490" r="30" fill="none" stroke="#0052d6" stroke-width="0.8"
-                        stroke-dasharray="3 5" />
-                    <circle cx="715" cy="490" r="16" fill="none" stroke="#428afe" stroke-width="1" />
-                    <circle cx="715" cy="490" r="2.5" fill="#0052d6" />
-                </g>
-
-                <!-- Floating Random Hexagons -->
-                <g stroke="#428afe" fill="none" opacity="0.32">
-                    <polygon points="690,140 715,125 740,140 740,170 715,185 690,170" stroke-width="1" />
-                    <polygon points="698,145 715,135 732,145 732,165 715,175 698,165" stroke-width="0.6"
-                        stroke-dasharray="2 2" />
-
-                    <polygon points="60,90 80,78 100,90 100,114 80,126 60,114" stroke-width="0.9" />
-                    <polygon points="50,560 70,548 90,560 90,584 70,596 50,584" stroke-width="0.9" />
-                    <polygon points="680,670 705,655 730,670 730,700 705,715 680,700" stroke-width="1" />
-                    <polygon points="110,770 130,758 150,770 150,794 130,806 110,794" stroke-width="0.8" />
-                </g>
-
-                <!-- Floating Isometric Wireframe Cubes & Diamonds -->
-                <g stroke="#0052d6" stroke-width="0.9" fill="none" opacity="0.28">
-                    <g transform="translate(130, 300)">
-                        <polygon points="18,0 36,10 18,20 0,10" fill="rgba(66,138,254,0.08)" />
-                        <polygon points="0,10 18,20 18,40 0,30" />
-                        <polygon points="36,10 18,20 18,40 36,30" />
-                    </g>
-                    <g transform="translate(680, 550)">
-                        <polygon points="16,0 32,16 16,32 0,16" stroke="#428afe" stroke-width="0.9"
-                            fill="rgba(66,138,254,0.06)" />
-                        <polygon points="16,5 27,16 16,27 5,16" stroke="#0052d6" stroke-width="0.6"
-                            stroke-dasharray="2 2" />
-                    </g>
-                </g>
-
-                <!-- Soundwaves / Frequency Pulses -->
-                <g stroke="#428afe" stroke-width="1.3" fill="none" opacity="0.32" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M 80 340 h 12 q 4 -14 8 0 q 4 14 8 0 q 4 -8 8 0 h 16" />
-                    <rect x="132" y="338" width="4" height="4" fill="#428afe" />
-
-                    <path d="M 610 300 h 10 q 5 -12 10 0 q 5 12 10 0 h 14" />
-                    <circle cx="654" cy="300" r="2" fill="#0052d6" />
-
-                    <path d="M 660 710 h 14 q 6 -16 12 0 q 6 16 12 0 h 18" />
-                </g>
-
-                <!-- Scattered Halftone Dot Clusters -->
-                <g fill="#428afe" opacity="0.22">
-                    <!-- Cluster 1 (Top Left) -->
-                    <circle cx="160" cy="80" r="1.2" />
-                    <circle cx="172" cy="75" r="1.5" />
-                    <circle cx="184" cy="70" r="1.8" />
-                    <circle cx="196" cy="65" r="1.4" />
-                    <circle cx="166" cy="92" r="1.4" />
-                    <circle cx="178" cy="87" r="1.8" />
-                    <circle cx="190" cy="82" r="2.0" />
-                    <circle cx="202" cy="77" r="1.5" />
-
-                    <!-- Cluster 2 (Mid Right) -->
-                    <circle cx="710" cy="360" r="1.2" />
-                    <circle cx="722" cy="355" r="1.5" />
-                    <circle cx="734" cy="350" r="1.8" />
-                    <circle cx="716" cy="372" r="1.4" />
-                    <circle cx="728" cy="367" r="1.8" />
-                    <circle cx="740" cy="362" r="2.0" />
-
-                    <!-- Cluster 3 (Bottom Left) -->
-                    <circle cx="50" cy="710" r="1.3" />
-                    <circle cx="62" cy="705" r="1.6" />
-                    <circle cx="74" cy="700" r="1.9" />
-                    <circle cx="56" cy="722" r="1.5" />
-                    <circle cx="68" cy="717" r="1.8" />
-                </g>
-
-                <!-- Scattered Chevrons >>> and <<< -->
-                <g stroke="#428afe" stroke-width="1.3" fill="none" opacity="0.35" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <g transform="translate(180, 110)">
-                        <polyline points="0,0 4,4 0,8" />
-                        <polyline points="5,0 9,4 5,8" />
-                        <polyline points="10,0 14,4 10,8" />
-                    </g>
-                    <g transform="translate(720, 240)">
-                        <polyline points="4,0 0,4 4,8" />
-                        <polyline points="9,0 5,4 9,8" />
-                        <polyline points="14,0 10,4 14,8" />
-                    </g>
-                    <g transform="translate(60, 480)">
-                        <polyline points="0,0 4,4 0,8" />
-                        <polyline points="5,0 9,4 5,8" />
-                        <polyline points="10,0 14,4 10,8" />
-                    </g>
-                    <g transform="translate(690, 620)">
-                        <polyline points="4,0 0,4 4,8" />
-                        <polyline points="9,0 5,4 9,8" />
-                        <polyline points="14,0 10,4 14,8" />
-                    </g>
-                </g>
-
-                <!-- Scattered Plus Signs (+) -->
-                <g stroke="#428afe" stroke-width="1.3" stroke-linecap="round" opacity="0.38">
-                    <path d="M 80 50 V 58 M 76 54 H 84" />
-                    <path d="M 230 140 V 148 M 226 144 H 234" />
-                    <path d="M 720 90 V 98 M 716 94 H 724" />
-                    <path d="M 640 220 V 228 M 636 224 H 644" />
-                    <path d="M 60 380 V 388 M 56 384 H 64" />
-                    <path d="M 180 470 V 478 M 176 474 H 184" />
-                    <path d="M 740 430 V 438 M 736 434 H 744" />
-                    <path d="M 660 590 V 598 M 656 594 H 664" />
-                    <path d="M 90 790 V 798 M 86 794 H 94" />
-                    <path d="M 710 750 V 758 M 706 754 H 714" />
-                </g>
-
-                <!-- Diagonal Technical Slashes /// -->
-                <g stroke="#0052d6" stroke-width="1.2" stroke-linecap="round" opacity="0.25">
-                    <line x1="60" y1="230" x2="68" y2="242" />
-                    <line x1="66" y1="230" x2="74" y2="242" />
-                    <line x1="72" y1="230" x2="80" y2="242" />
-
-                    <line x1="730" y1="310" x2="738" y2="322" />
-                    <line x1="736" y1="310" x2="744" y2="322" />
-                    <line x1="742" y1="310" x2="750" y2="322" />
-                </g>
-
-                <!-- Micro Mini Bar Charts & Indicators -->
-                <g opacity="0.28">
-                    <rect x="150" y="248" width="3" height="8" fill="#428afe" rx="0.5" />
-                    <rect x="155" y="242" width="3" height="14" fill="#0052d6" rx="0.5" />
-                    <rect x="160" y="245" width="3" height="11" fill="#428afe" rx="0.5" />
-                    <rect x="165" y="238" width="3" height="18" fill="#0052d6" rx="0.5" />
-
-                    <rect x="690" y="698" width="3" height="8" fill="#428afe" rx="0.5" />
-                    <rect x="695" y="694" width="3" height="12" fill="#0052d6" rx="0.5" />
-                    <rect x="700" y="690" width="3" height="16" fill="#428afe" rx="0.5" />
-                </g>
-            </svg>
+            <div class="card call">
+                <div class="lbl">CALL US :</div>
+                <p>+012 345 678 90<br>+012 987 654 32</p>
+            </div>
         </div>
 
-        <!-- Top Accent Bar -->
-        <div class="top-accent-bar"></div>
+        <div class="abs right">
+            <div class="card">
+                <h2 class="h">Choose us</h2>
+                <span class="txt s36"></span>
 
-        <!-- Wavy Top Section (Header Canopy) -->
-        <section class="wavy-top-section">
-            <div class="wavy-top-body">
-                <div class="logo-container">
-                    <img src="iMAD_logo.svg" alt="iMAD Research Logo" class="logo">
+                <div class="pbox">
+                    <div><svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="14" r="6" />
+                            <path d="M12 11l7-7M15 4h4v4" />
+                        </svg></div>
+                    <div><svg viewBox="0 0 24 24">
+                            <path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6z" />
+                            <circle cx="12" cy="11" r="2" />
+                            <path d="M12 13v3" />
+                        </svg></div>
+                    <div><svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="13" r="8" />
+                            <path d="M12 9v4l3 2M10 2h4" />
+                        </svg></div>
                 </div>
+
+                <div class="bul"><i></i><span class="txt"></span></div>
+                <div class="bul"><i></i><span class="txt"></span></div>
+                <div class="bul"><i></i><span class="txt"></span></div>
             </div>
-            <div class="wavy-top-separator">
-                <svg class="wavy-svg" viewBox="0 0 1440 130" preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg">
+        </div>
+
+        <div class="abs foot">
+            <div class="abs l"></div>
+            <div class="abs l2"></div>
+        </div>
+        <div class="abs soc">
+            <i><svg viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg></i>
+            <i><svg viewBox="0 0 24 24">
                     <path
-                        d="M 0 0 L 1440 0 L 1440 28 C 1380 24 1280 10 1150 10 C 940 10 740 90 540 90 C 360 90 240 25 0 25 Z"
-                        fill="rgba(66, 138, 254, 0.35)" />
-                    <path
-                        d="M 0 0 L 1440 0 L 1440 42 C 1370 38 1280 25 1140 25 C 930 25 730 105 530 105 C 350 105 220 45 0 45 Z"
-                        fill="#0052d6" />
-                    <path d="M 0 45 C 220 45 350 105 530 105 C 730 105 930 25 1140 25 C 1280 25 1370 38 1440 42"
-                        fill="none" stroke="#428afe" stroke-width="3" stroke-linecap="round" />
-                </svg>
-            </div>
-        </section>
+                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                </svg></i>
+            <i><svg viewBox="0 0 24 24">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                </svg></i>
+        </div>
+        <div class="abs web">www.imadresearch.com</div>
+    </section>
 
-        <!-- Header -->
-        <header class="header">
-            <div class="header-line"></div>
-            <h1 class="case-study-title">Case Study</h1>
-            <div class="category-tag template-hidden">
-                <span class="tag-text template-hidden">APPROACH & RESULTS</span>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="content page2-content">
-            <div class="page2-grid">
-                <!-- Top Left: Approach -->
-                <div class="page2-card approach-card">
-                    <div class="card-header">
-                        <div class="block-icon">
-                            <!-- Lightbulb strategy icon -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
-                                <path d="M9 18h6" />
-                                <path d="M10 22h4" />
-                                <path d="m9 10 2 2 4-4" />
-                            </svg>
-                        </div>
-                        <h2 class="card-title">Approach</h2>
-                    </div>
-                    <ul class="bullet-list">
-                        <li class="bullet-item template-hidden">Mix method research for both exploratory and validatory
-                            information</li>
-                        <li class="bullet-item template-hidden">Inclusion of diverse profiles of gamers from casual to
-                            hardcore, regular to occasional in family or social events gamers across all age groups</li>
-                        <li class="bullet-item template-hidden">A/B Concept Testing method wherein each respondent shown
-                            different console concepts, pricing, and feature sets, and their preferences were measured.
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Top Right: Solutions & Support -->
-                <div class="page2-card solutions-card">
-                    <div class="card-header">
-                        <div class="block-icon">
-                            <!-- Helping Hands / Support icon -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                            </svg>
-                        </div>
-                        <h2 class="card-title">Solutions & Support</h2>
-                    </div>
-                    <ul class="bullet-list">
-                        <li class="bullet-item template-hidden">Online survey development</li>
-                        <li class="bullet-item template-hidden">Survey programming and hosting</li>
-                        <li class="bullet-item template-hidden">Data collection across countries</li>
-                        <li class="bullet-item template-hidden">Multilingual Interviewing, video interviews</li>
-                        <li class="bullet-item template-hidden">Project management</li>
-                        <li class="bullet-item template-hidden">Quality checks</li>
-                        <li class="bullet-item template-hidden">Ontime updates via dashboards</li>
-                        <li class="bullet-item template-hidden">Data analysis and recommendations</li>
-                    </ul>
-                </div>
-
-                <!-- Bottom Left: iMAD Effect -->
-                <div class="page2-card effect-card">
-                    <div class="effect-header">
-                        <div class="effect-logo-badge">
-                            <span class="effect-imad">iMAD</span>
-                            <span class="effect-title-text">EFFECT</span>
-                        </div>
-                        <div class="effect-spark-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="effect-body">
-                        <div class="effect-point template-hidden">
-                            <div class="point-bar"></div>
-                            <p class="point-text">Our robust methodology, real-time analytics, and precise audience
-                                targeting helped client in selecting the right console for global expansion, ensuring a
-                                data-backed, successful product launch</p>
-                        </div>
-                        <div class="effect-point template-hidden">
-                            <div class="point-bar"></div>
-                            <p class="point-text">Timely insights, rich data with live tracking dashboard providing
-                                actionable inputs for client</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Right: Results -->
-                <div class="page2-card results-card">
-                    <div class="card-header">
-                        <div class="block-icon">
-                            <!-- Trophy / Award icon -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                                <path d="M4 22h16" />
-                                <path
-                                    d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1h10v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34" />
-                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
-                            </svg>
-                        </div>
-                        <h2 class="card-title">Results</h2>
-                    </div>
-                    <ul class="bullet-list">
-                        <li class="bullet-item template-hidden">Identification of winning console concept</li>
-                        <li class="bullet-item template-hidden">Pricing validity ensuring intention to purchase and
-                            sensitivity</li>
-                        <li class="bullet-item template-hidden">Trade-off analysis provided clear direction on priority
-                            features and their impact on communication selection and preferences</li>
-                        <li class="bullet-item template-hidden">Impact on brand of the communication/ad and fitment</li>
-                        <li class="bullet-item template-hidden">Highlighted the regions with highest preference for
-                            concepts and helped in prioritising launch markets accordingly</li>
-                    </ul>
-                </div>
-            </div>
-        </main>
-
-        <!-- Wavy Bottom Section (Contacts + Copyright) -->
-        <section class="wavy-bottom-section page2-wavy">
-            <div class="wavy-separator">
-                <svg class="wavy-svg" viewBox="0 0 1440 130" preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M 0 25 C 240 25 360 90 540 90 C 740 90 940 10 1150 10 C 1280 10 1380 24 1440 28 L 1440 130 L 0 130 Z"
-                        fill="rgba(66, 138, 254, 0.35)" />
-                    <path
-                        d="M 0 45 C 220 45 350 105 530 105 C 730 105 930 25 1140 25 C 1280 25 1370 38 1440 42 L 1440 130 L 0 130 Z"
-                        fill="#0052d6" />
-                    <path d="M 0 45 C 220 45 350 105 530 105 C 730 105 930 25 1140 25 C 1280 25 1370 38 1440 42"
-                        fill="none" stroke="#428afe" stroke-width="3" stroke-linecap="round" />
-                </svg>
-            </div>
-            <div class="wavy-body">
-                <div class="footer-contacts">
-                    <div class="footer-item">
-                        <div class="footer-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                        </div>
-                        <span class="footer-text">(203) 491-7068</span>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="2" y1="12" x2="22" y2="12" />
-                                <path
-                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                            </svg>
-                        </div>
-                        <span class="footer-text">www.imad.com</span>
-                    </div>
-                    <div class="footer-item">
-                        <div class="footer-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                        </div>
-                        <span class="footer-text">US, India, UK</span>
-                    </div>
-                </div>
-                <div class="footer-copyright">
-                    <p>© iMAD Research copyright.</p>
-                </div>
-            </div>
-            <div class="bottom-accent-bar"></div>
-        </section>
-    </div>
 </body>
 
 </html>
