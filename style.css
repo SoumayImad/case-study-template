@@ -1,0 +1,746 @@
+/* ============================================
+   iMAD Case Study – White & Blue Theme
+   A4 Print-Ready Stylesheet
+   ============================================ */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Brand Accent Colors */
+    --wavy-bg: #0052d6;
+    --border-blue: #428afe;
+
+    /* Blue Palette */
+    --blue-900: #0052d6;
+    --blue-800: #0052d6;
+    --blue-700: #0046b8;
+    --blue-600: #0052d6;
+    --blue-500: #428afe;
+    --blue-400: #428afe;
+    --blue-300: #93c5fd;
+    --blue-200: #428afe;
+    --blue-100: #dbeafe;
+    --blue-50: #eff6ff;
+
+    /* Neutrals */
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+
+    /* Accent */
+    --accent-gradient: linear-gradient(135deg, #0052d6 0%, #428afe 100%);
+    --accent-gradient-light: linear-gradient(135deg, #428afe 0%, #0052d6 100%);
+}
+
+/* --- Template Mode (Canva & Editing Apps) ---
+   visibility: hidden hides the text while preserving 
+   the exact layout height, spacing, and geometry --- */
+.template-hidden,
+.category-tag.template-hidden,
+.block-text,
+.client-quote,
+.client-attribution,
+.stat-number,
+.stat-label,
+.bullet-item.template-hidden,
+.effect-point.template-hidden .point-text {
+    visibility: hidden;
+}
+
+html {
+    font-size: 16px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--gray-100);
+    color: var(--gray-800);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- A4 Page Container --- */
+.a4-page {
+    width: 210mm;
+    min-height: 297mm;
+    max-height: 297mm;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Background Pattern --- */
+.bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.circuit-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+/* --- Top Accent Bar --- */
+.top-accent-bar {
+    height: 4px;
+    background: var(--accent-gradient);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+/* --- Wavy Top Section (Header Canopy) --- */
+.wavy-top-section {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wavy-top-body {
+    background: #0052d6;
+    padding: 18px 40px 6px 40px;
+    position: relative;
+}
+
+.wavy-top-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(66, 138, 254, 0.18) 100%);
+    pointer-events: none;
+}
+
+.wavy-top-body .logo-container {
+    margin-bottom: 0;
+}
+
+.wavy-top-separator {
+    width: 100%;
+    height: 55px;
+    line-height: 0;
+    overflow: hidden;
+    margin-top: -1px;
+    /* Prevents subpixel seam between body and wave */
+}
+
+.wavy-top-separator .wavy-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* --- Header --- */
+.header {
+    padding: 10px 40px 0 40px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.logo-container {
+    margin-bottom: 0;
+}
+
+.logo {
+    height: 34px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.header-line {
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+
+.case-study-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--blue-900);
+    line-height: 1.1;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent-gradient);
+    padding: 6px 18px;
+    border-radius: 4px;
+    margin-bottom: 0;
+}
+
+.tag-text {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* --- Main Content --- */
+.content {
+    padding: 10px 40px 10px 40px;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- Left Column: Info Blocks --- */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.info-block {
+    position: relative;
+    padding-left: 0;
+}
+
+.block-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.block-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--blue-50);
+    border: 1.5px solid var(--blue-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-600);
+    flex-shrink: 0;
+}
+
+.block-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue-900);
+    letter-spacing: 0.2px;
+}
+
+.block-text {
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--gray-600);
+    padding-left: 44px;
+}
+
+/* --- Right Column: Client Speaks Card --- */
+.right-column {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0;
+}
+
+.client-speaks-card {
+    background: linear-gradient(145deg, rgba(239, 246, 255, 0.90) 0%, rgba(255, 255, 255, 0.93) 50%, rgba(239, 246, 255, 0.90) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid var(--blue-200);
+    border-radius: 14px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.client-speaks-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent-gradient);
+    border-radius: 14px 14px 0 0;
+}
+
+.client-speaks-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.quote-icon {
+    color: var(--blue-300);
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+.client-speaks-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue-800);
+    margin-bottom: 12px;
+}
+
+.client-quote {
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: var(--gray-600);
+    font-style: italic;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.client-attribution {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue-700);
+    letter-spacing: 0.3px;
+}
+
+/* --- Wavy Bottom Section (About Us + Contacts + Copyright) --- */
+.wavy-bottom-section {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wavy-separator {
+    width: 100%;
+    height: 85px;
+    line-height: 0;
+    overflow: hidden;
+    margin-bottom: -1px;
+    /* Prevents subpixel seam between wave and body */
+}
+
+.wavy-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.wavy-body {
+    background: #0052d6;
+    padding: 0 40px 18px 40px;
+    color: var(--white);
+    position: relative;
+}
+
+.wavy-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(66, 138, 254, 0.18) 100%);
+    pointer-events: none;
+}
+
+.about-block {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 14px;
+}
+
+.about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.about-title::after {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: #428afe;
+    margin-top: 6px;
+    border-radius: 1px;
+}
+
+.about-text {
+    font-size: 11px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    max-width: 95%;
+}
+
+.footer-contacts {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid #428afe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.footer-text {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid rgba(66, 138, 254, 0.35);
+    position: relative;
+    z-index: 1;
+}
+
+.footer-copyright p {
+    font-size: 8.5px;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.5px;
+}
+
+/* --- Bottom Accent Bar --- */
+.bottom-accent-bar {
+    height: 5px;
+    background: linear-gradient(90deg, #0052d6 0%, #428afe 100%);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   Page 2 Styles (Approach, Solutions, Effect, Results)
+   ============================================ */
+.page2-content {
+    padding: 12px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.page2-card {
+    background: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid var(--blue-200);
+    border-radius: 14px;
+    padding: 20px 22px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.05);
+}
+
+.page2-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--blue-100);
+}
+
+.page2-card .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue-900);
+    letter-spacing: 0.2px;
+}
+
+/* Bullet list */
+.bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.bullet-item {
+    position: relative;
+    padding-left: 16px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--gray-700);
+}
+
+.bullet-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue-600);
+}
+
+/* Solutions card specific */
+.solutions-card .bullet-item {
+    font-size: 10.5px;
+    line-height: 1.45;
+}
+
+/* iMAD Effect Card (Hero Highlight) */
+.effect-card {
+    background: linear-gradient(145deg, var(--blue-900) 0%, #1e4d8c 100%);
+    border: 1.5px solid var(--blue-600);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(30, 58, 95, 0.2);
+}
+
+.effect-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.effect-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 1;
+}
+
+.effect-logo-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.effect-imad {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--blue-300);
+}
+
+.effect-title-text {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.effect-spark-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-300);
+}
+
+.effect-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.effect-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.point-bar {
+    width: 3px;
+    height: 100%;
+    min-height: 24px;
+    background: var(--blue-400);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.point-text {
+    font-size: 11px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+}
+
+/* Page 2 Wavy Bottom Section */
+.page2-wavy .wavy-separator {
+    height: 55px;
+}
+
+.page2-wavy .wavy-body {
+    padding: 0 40px 14px 40px;
+}
+
+.page2-wavy .footer-contacts {
+    margin-bottom: 8px;
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        background: none;
+        padding: 0;
+        margin: 0;
+        gap: 0;
+    }
+
+    .a4-page {
+        width: 210mm;
+        height: 297mm;
+        min-height: 297mm;
+        max-height: 297mm;
+        box-shadow: none;
+        margin: 0;
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+    }
+
+    .a4-page:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+}
+
+/* ============================================
+   Screen Responsiveness (for preview)
+   ============================================ */
+@media screen and (max-width: 850px) {
+    body {
+        padding: 10px;
+    }
+
+    .a4-page {
+        width: 100%;
+        min-height: auto;
+        max-height: none;
+    }
+
+    .content-grid,
+    .page2-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
